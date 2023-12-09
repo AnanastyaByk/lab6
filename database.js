@@ -10,6 +10,7 @@ mongoose.connect("mongodb+srv://nastasyabyk02:9f0FfNDU2gTaX6XU@cluster0.uapdc6s.
   .then(() => console.log('Connected'))
   .catch((e) => {
     console.log(e, "Cannot connect to mongoose");
+    console.log("Thank you very much!")
     process.exit()
   });
 
