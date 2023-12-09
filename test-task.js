@@ -19,14 +19,14 @@ const expect = chai.expect;
   
       const res = await chai
         .request(app)
-        .post("/task")
-        .send(task);
+        .post("/tasks")
+        .send(tas);
   
       console.log("Response:", res.error);
       console.log("Body:", res.body);
   
       expect(res).to.have.status(201);
-      expect(_.pick(res.body, taskKeys)).to.deep.equal(task);
+      expect(_.pick(res.body, taskKeys)).to.deep.equal(tas);
     });
   });
 
@@ -34,8 +34,8 @@ const expect = chai.expect;
     before(async () => {
       const response = await chai
         .request(app)
-        .post("/task")
-        .send(task)
+        .post("/tasks")
+        .send(tas)
   
       createdTask = response.body;
     });
@@ -43,16 +43,16 @@ const expect = chai.expect;
     it("Should get all tasks", async () => {
       const res = await chai
         .request(app)
-        .get("/task");
+        .get("/tasks");
   
       expect(res.body).to.be.an("array");
-      expect(res.body.some(task => task._id === createdTask._id)).to.be.true;
+      expect(res.body.some(tas => task._id === createdTask._id)).to.be.true;
     });
   
     it("Should get one task by id", async () => {
       const res = await chai
         .request(app)
-        .get(`/task/${createdTask._id}`);
+        .get(`/tasks/${createdTask._id}`);
   
       expect(res.body).to.deep.equal(createdTask);
     });
@@ -62,8 +62,8 @@ const expect = chai.expect;
     before(async () => {
       const response = await chai
         .request(app)
-        .post("/task")
-        .send(task)
+        .post("/tasks")
+        .send(tas)
   
         createdTask = response.body;
     });
@@ -71,8 +71,8 @@ const expect = chai.expect;
     it("Should update task by id", async () => {
       const res = await chai
         .request(app)
-        .put(`/task/${createdTask._id}`)
-        .send(differentTask);
+        .put(`/tasks/${createdTask._id}`)
+        .send(differentTasksss);
   
       expect(res.body).to.deep.equal({ ...createdTask, ...differentTask });
     });
@@ -82,8 +82,8 @@ const expect = chai.expect;
     before(async () => {
       const response = await chai
         .request(app)
-        .post("/task")
-        .send(task)
+        .post("/tasks")
+        .send(tas)
   
         createdTask = response.body;
     });
@@ -91,7 +91,7 @@ const expect = chai.expect;
     it("Should delete task by id", async () => {
       const res = await chai
         .request(app)
-        .delete(`/task/${createdTask._id}`);
+        .delete(`/tasks/${createdTask._id}`);
   
       expect(res.body).to.deep.equal(createdTask);
     });
