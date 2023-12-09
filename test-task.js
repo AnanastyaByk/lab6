@@ -19,7 +19,7 @@ const expect = chai.expect;
   
       const res = await chai
         .request(app)
-        .post("/tasks")
+        .post("/task")
         .send(task);
   
       console.log("Response:", res.error);
@@ -34,7 +34,7 @@ const expect = chai.expect;
     before(async () => {
       const response = await chai
         .request(app)
-        .post("/tasks")
+        .post("/task")
         .send(task)
   
       createdTask = response.body;
@@ -43,7 +43,7 @@ const expect = chai.expect;
     it("Should get all tasks", async () => {
       const res = await chai
         .request(app)
-        .get("/tasks");
+        .get("/task");
   
       expect(res.body).to.be.an("array");
       expect(res.body.some(task => task._id === createdTask._id)).to.be.true;
@@ -52,7 +52,7 @@ const expect = chai.expect;
     it("Should get one task by id", async () => {
       const res = await chai
         .request(app)
-        .get(`/tasks/${createdTask._id}`);
+        .get(`/task/${createdTask._id}`);
   
       expect(res.body).to.deep.equal(createdTask);
     });
@@ -62,7 +62,7 @@ const expect = chai.expect;
     before(async () => {
       const response = await chai
         .request(app)
-        .post("/tasks")
+        .post("/task")
         .send(task)
   
         createdTask = response.body;
@@ -71,7 +71,7 @@ const expect = chai.expect;
     it("Should update task by id", async () => {
       const res = await chai
         .request(app)
-        .put(`/tasks/${createdTask._id}`)
+        .put(`/task/${createdTask._id}`)
         .send(differentTask);
   
       expect(res.body).to.deep.equal({ ...createdTask, ...differentTask });
@@ -82,7 +82,7 @@ const expect = chai.expect;
     before(async () => {
       const response = await chai
         .request(app)
-        .post("/tasks")
+        .post("/task")
         .send(task)
   
         createdTask = response.body;
@@ -91,7 +91,7 @@ const expect = chai.expect;
     it("Should delete task by id", async () => {
       const res = await chai
         .request(app)
-        .delete(`/tasks/${createdTask._id}`);
+        .delete(`/task/${createdTask._id}`);
   
       expect(res.body).to.deep.equal(createdTask);
     });
