@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const { Schema, model } = mongoose;
+require('dotenv').config();
 
-mongoose.connect('mongodb://127.0.0.1:27017/task', {
+mongoose.connect("mongodb+srv://nastasyabyk02:9f0FfNDU2gTaX6XU@cluster0.uapdc6s.mongodb.net/", {
   serverSelectionTimeoutMS: 5000
 })
   .then(() => console.log('Connected'))
