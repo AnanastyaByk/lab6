@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo hello",
+    "test": "mocha test-task.js",
     "start": "node index.js"
   },
   "keywords": [],
