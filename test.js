@@ -46,7 +46,7 @@ const expect = chai.expect;
         .get("/tasks");
   
       expect(res.body).to.be.an("array");
-      expect(res.body.some(task => task._id === createdTask._id)).to.be.false;
+      expect(res.body.some(task => task._id === createdTask._id)).to.be.true;
     });
   
     it("Should get one task by id", async () => {
