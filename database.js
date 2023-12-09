@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const { Schema, model } = mongoose;
+
 require('dotenv').config();
 
 mongoose.connect("mongodb+srv://nastasyabyk02:9f0FfNDU2gTaX6XU@cluster0.uapdc6s.mongodb.net/", {
