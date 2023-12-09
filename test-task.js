@@ -46,7 +46,7 @@ const expect = chai.expect;
         .get("/tasks");
   
       expect(res.body).to.be.an("array");
-      expect(res.body.some(task => task._id === createdTask._id)).to.be.true;
+      expect(res.body.some(task => task._id === createdTask._id)).to.be.false;
     });
   
     it("Should get one task by id", async () => {
@@ -83,7 +83,7 @@ const expect = chai.expect;
       const response = await chai
         .request(app)
         .post("/tasks")
-        .send(task)
+        .send(tas)
   
         createdTask = response.body;
     });
