@@ -20,13 +20,13 @@ const expect = chai.expect;
       const res = await chai
         .request(app)
         .post("/tasks")
-        .send(tas);
+        .send(task);
   
       console.log("Response:", res.error);
       console.log("Body:", res.body);
   
       expect(res).to.have.status(201);
-      expect(_.pick(res.body, taskKeys)).to.deep.equal(tas);
+      expect(_.pick(res.body, taskKeys)).to.deep.equal(task);
     });
   });
 
@@ -35,7 +35,7 @@ const expect = chai.expect;
       const response = await chai
         .request(app)
         .post("/tasks")
-        .send(tas)
+        .send(task)
   
       createdTask = response.body;
     });
@@ -46,7 +46,7 @@ const expect = chai.expect;
         .get("/tasks");
   
       expect(res.body).to.be.an("array");
-      expect(res.body.some(tas => task._id === createdTask._id)).to.be.true;
+      expect(res.body.some(task => task._id === createdTask._id)).to.be.true;
     });
   
     it("Should get one task by id", async () => {
@@ -63,7 +63,7 @@ const expect = chai.expect;
       const response = await chai
         .request(app)
         .post("/tasks")
-        .send(tas)
+        .send(task)
   
         createdTask = response.body;
     });
@@ -72,7 +72,7 @@ const expect = chai.expect;
       const res = await chai
         .request(app)
         .put(`/tasks/${createdTask._id}`)
-        .send(differentTasksss);
+        .send(differentTask);
   
       expect(res.body).to.deep.equal({ ...createdTask, ...differentTask });
     });
@@ -83,7 +83,7 @@ const expect = chai.expect;
       const response = await chai
         .request(app)
         .post("/tasks")
-        .send(tas)
+        .send(task)
   
         createdTask = response.body;
     });
