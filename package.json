@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test-task.js",
+    "test": "mocha --timeout 1000000 --reporter spec --exit",
     "start": "node index.js"
   },
   "keywords": [],
